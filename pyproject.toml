@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rex-cli"
+version = "1.0.0"
+description = "🦖 Rex — A Swiss Army Knife CLI for DevOps Engineers"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Merthan", email = "your.email@example.com"},
+]
+keywords = [
+    "devops", "cli", "encryption", "json", "yaml", "cron",
+    "password-generator", "hash", "base64", "jwt", "ssl", "network",
+    "kubernetes", "sre", "infrastructure",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "typer[all]>=0.9.0",
+    "rich>=13.0.0",
+    "cryptography>=41.0.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+query = ["jmespath>=1.0.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+all = ["rex-cli[query,dev]"]
+
+[project.urls]
+Homepage = "https://github.com/DavidHayter/rex-cli"
+Documentation = "https://github.com/DavidHayter/rex-cli#readme"
+Repository = "https://github.com/DavidHayter/rex-cli"
+Issues = "https://github.com/DavidHayter/rex-cli/issues"
+Changelog = "https://github.com/DavidHayter/rex-cli/blob/main/CHANGELOG.md"
+
+[project.scripts]
+rex = "rex.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rex*"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
