@@ -1,0 +1,1 @@
+"""Rex CLI tests."""
